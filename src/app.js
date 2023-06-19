@@ -5,9 +5,7 @@ const logger = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
 
-const loginRouter = require('./routes/auth/login');
-const logoutRouter = require('./routes/auth/logout');
-const registerRouter = require('./routes/auth/register');
+const helloWorldRouter = require('./routes/auth/helloWorld');
 
 const errorHandler = require('./middleware/errorHandler');
 
@@ -20,10 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
 
-
-app.use('/api/login', loginRouter);
-app.use('/api/logout', logoutRouter);
-app.use('/api/register', registerRouter);
+app.use('/api/helloWorld', helloWorldRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
