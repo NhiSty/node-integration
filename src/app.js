@@ -5,7 +5,8 @@ const logger = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
 
-const helloWorldRouter = require('./routes/auth/helloWorld');
+const helloWorldRouter = require('./routes/helloWorld');
+const openAI = require("./routes/chat")
 
 const errorHandler = require('./middleware/errorHandler');
 
@@ -19,9 +20,11 @@ app.use(cookieParser());
 app.use(cors());
 
 app.use('/api/helloWorld', helloWorldRouter);
+app.use('/api/send-message', openAI)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
+  console.log(req);
   next(createError.NotFound());
 });
 
